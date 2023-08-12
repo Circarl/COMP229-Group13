@@ -10,16 +10,36 @@ import { BasePageComponent } from 'src/app/partials/base-page/base-page.componen
 })
 export class RegistrationComponent extends BasePageComponent implements OnInit {
 
-  public error: String;
+  public error: string;
   public user: User;
 
   constructor(route: ActivatedRoute, router: Router) {
     super(route);
-    this.error = "";
+    this.error = '';
     this.user = new User();
   }
 
   override ngOnInit(): void {
+    // Call the base class ngOnInit if needed
+    super.ngOnInit();
+
+    // Your additional ngOnInit logic here
   }
 
+  registerUser() {
+    if (this.validateUserData()) {
+      this.performRegistration();
+    } else {
+      this.error = 'User data is invalid.';
+    }
+  }
+
+  private validateUserData(): boolean {
+    return this.user.email.trim() !== '' && this.user.password.trim() !== '';
+  }
+
+  private performRegistration() {
+    console.log('User registered:', this.user);
+    // You can make API calls, save to the database, etc. here
+  }
 }
