@@ -1,10 +1,24 @@
 const dotenv = require("dotenv");
-var app = require("./backend/app");
-var debug = require("debug")("comp229-group3project:server");
+dotenv.config({ path: "./backend/config/config.env" }); // Load environment variables first
+
+const express = require("express");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const userRoute = require('./backend/routes/users');
+
+const app = express();
+
+app.use(bodyParser.json());
+app.use(logger("dev"));
+app.use(express.json());
+app.use(cookieParser());
+
+var debug = require("debug")("comp229-group13project:server");
 const dbConnect = require("./backend/config/db_config");
 
-// Initialize env path using dotenv
-dotenv.config({ path: "./backend/config/config.env" });
+console.log("DB_MONGODB_URI:", process.env.DB_MONGODB_URI);
+console.log("PORT:", process.env.PORT);
 
 /**
  * Get port from environment and store in Express.

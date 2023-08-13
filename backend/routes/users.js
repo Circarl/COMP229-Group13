@@ -1,5 +1,5 @@
 const express = require("express");
-const { signUp } = require("../controller/userControler");
+const { signUp } = require("../middleware/userControler"); // Updated import
 const router = express.Router();
 
 // Admin || User

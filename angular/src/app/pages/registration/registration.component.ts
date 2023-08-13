@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { BasePageComponent } from 'src/app/partials/base-page/base-page.component';
+import { RegistrationService } from './registration.service';
 
 @Component({
   selector: 'app-registration',
