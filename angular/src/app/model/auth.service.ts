@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './user.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root'})
 export class AuthService {
   private baseUrl = 'http://localhost:3100'; // Replace with your actual API URL
 

@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const userController = require("../controllers/userController");
 
 /* GET home page. */
 let indexController = require('../controller/index');
@@ -11,7 +12,7 @@ router.get('/login' , indexController.displayLoginPage);
 router.post('/login', indexController.processLoginPage);
 
 router.get('/register' , indexController.displayRegisterPage);
-router.post('/register', indexController.processRegisterPage);
+router.post("/register", userController.signUp);
 
 router.get('/logout', indexController.performLogout);
 

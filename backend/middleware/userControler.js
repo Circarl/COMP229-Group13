@@ -3,7 +3,7 @@ const sendTokenToCookie = require("../utils/cookies");
 
 exports.signUp = async (req, res) => {
   try {
-    const user = await User.find({ email: req.body.email });
+    const user = await User.findOne({ email: req.body.email });
 
     if (user) {
       return res.status(400).json({ message: "User already exist" });
@@ -15,6 +15,7 @@ exports.signUp = async (req, res) => {
       email: req.body.email,
       passport: req.body.passport,
       username: req.body.username,
+      password: req.body.password,
     });
 
     sendTokenToCookie(newUser, 200, res);
